@@ -1,0 +1,52 @@
+﻿@page "{id:int}"
+@model JobTracker.Pages.DetailsModel
+@{
+    ViewData["Title"] = "Job Details";
+}
+<link rel="stylesheet" href="~/css/Details.css" />
+
+<section class="job-details-section">
+    @if (Model.SelectedJob != null)
+    {
+        <form method="post">
+            <div class="job-card-details">
+                <label>Title:</label>
+                <input asp-for="SelectedJob.Title" />
+
+                <label>Company:</label>
+                <input asp-for="SelectedJob.Company" />
+
+                <label>Applied:</label>
+                <input asp-for="SelectedJob.CreatedAt" />
+
+                <label>Description:</label>
+                <textarea asp-for="SelectedJob.Description"></textarea>
+
+                <label>Notes:</label>
+                <textarea asp-for="SelectedJob.Notes"></textarea>
+
+                <label>Contact:</label>
+                <input asp-for="SelectedJob.Contact" />
+
+                <label>Status:</label>
+                <select asp-for="SelectedJob.Status">
+                    <option value="Applied">Applied</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+
+
+                <div class="btn-div">
+                    <button type="submit" class="save-btn">Save</button>
+                    <button type="submit" class="save-btn remove-btn">Remove</button>
+                </div>
+                
+            </div>
+        </form>
+    }
+    else
+    {
+        <p>Job not found.</p>
+    }
+</section>

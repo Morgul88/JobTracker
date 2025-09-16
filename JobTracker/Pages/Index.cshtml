@@ -10,74 +10,46 @@
 }
 <link rel="stylesheet" href="~/css/index.css" />
 <section>
-    <form method="post">
-        <label>Titel:</label>
-        <input asp-for="Job.Title" />
-        <span asp-validation-for="Job.Title"></span>
-        <br />
 
-        <label>Company:</label>
-        <input asp-for="Job.Company" />
-        <span asp-validation-for="Job.Company"></span>
-        <br />
-
-        <label>Description:</label>
-        <input asp-for="Job.Description" />
-        <span asp-validation-for="Job.Description"></span>
-        <br />
-
-        <label>Notes:</label>
-        <input asp-for="Job.Notes" />
-        <span asp-validation-for="Job.Notes"></span>
-        <br />
-
-        <label>Contact:</label>
-        <input asp-for="Job.Contact" />
-        <span asp-validation-for="Job.Contact"></span>
-        <br />
-
-
-        <button type="submit">Submit</button>
-    </form>
 
     <div class="index-section">
 
         <div class="applied columns">
-            <div class="text-center">
+            <div class="text-center green">
 
 
-                <h2>Applied</h2>
+                <h2>APPLIED</h2>
 
                 <div class="jobs-grid">
+                    
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Applied"))
                     {
-                        <div class="job-card">
-                            <strong>Title:@(job.Title)</strong>
-                            <p><strong>Company:</strong> @job.Company</p>
-                            <p><strong>Status:</strong> @job.Status</p>
-                            <p><strong>Notes:</strong> @(job.Notes ?? "-")</p>
-                            <p><strong>Contact:</strong> @(job.Contact ?? "-")</p>
-                        </div>
+                        <a asp-page="/Details" asp-route-id="@job.Id">
+                            <div class="job-card">
+                                <strong>@(job.Title)</strong>
+                                <p> @job.Company</p>
+
+                            </div>
+                        </a>
+                        
                     }
                 </div>
                 
             </div>
         </div>
         <div class="interview columns">
-            <div class="text-center">
+            <div class="text-center yellow">
 
 
-                <h2>Interview</h2>
+                <h2>INTERVIEW</h2>
 
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Interview"))
                     {
                         <div class="job-card">
-                            <h3>@(job.Title ?? "Ingen titel angiven")</h3>
-                            <p><strong>Company:</strong> @job.Company</p>
-                            <p><strong>Status:</strong> @job.Status</p>
-                            <p><strong>Notes:</strong> @(job.Notes ?? "-")</p>
-                            <p><strong>Contact:</strong> @(job.Contact ?? "-")</p>
+                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
+                            <p> @job.Company</p>
+                       
                         </div>
                     }
                 </div>
@@ -88,17 +60,16 @@
             <div class="text-center">
 
 
-                <h2>Offer</h2>
+                <h2>OFFER</h2>
 
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Offer"))
                     {
                         <div class="job-card">
-                            <h3>@(job.Title ?? "Ingen titel angiven")</h3>
-                            <p><strong>Company:</strong> @job.Company</p>
-                            <p><strong>Status:</strong> @job.Status</p>
-                            <p><strong>Notes:</strong> @(job.Notes ?? "-")</p>
-                            <p><strong>Contact:</strong> @(job.Contact ?? "-")</p>
+                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
+                            <p> @job.Company</p>
+                            
+                           
                         </div>
                     }
                 </div>
@@ -106,20 +77,18 @@
             </div>
         </div>
         <div class="rejected columns">
-            <div class="text-center">
+            <div class="text-center red">
 
 
-                <h2>Rejected</h2>
+                <h2>REJECTED</h2>
 
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Rejected"))
                     {
                         <div class="job-card">
-                            <h3>@(job.Title ?? "Ingen titel angiven")</h3>
-                            <p><strong>Company:</strong> @job.Company</p>
-                            <p><strong>Status:</strong> @job.Status</p>
-                            <p><strong>Notes:</strong> @(job.Notes ?? "-")</p>
-                            <p><strong>Contact:</strong> @(job.Contact ?? "-")</p>
+                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
+                            <p> @job.Company</p>
+                           
                         </div>
                     }
                 </div>

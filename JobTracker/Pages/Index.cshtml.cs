@@ -14,6 +14,8 @@ namespace JobTracker.Pages
         public Jobs Job { get; set; } = new Jobs();
         public IList<Jobs> Jobs { get; set; } = new List<Jobs>();
 
+        public Jobs? SelectedJob { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger, JobService jobService)
         {
             _logger = logger;
@@ -32,6 +34,8 @@ namespace JobTracker.Pages
             }
             return NotFound();
         }
+
+       
 
         public async Task<IActionResult> OnPostAsync()
         {

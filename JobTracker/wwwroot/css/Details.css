@@ -1,0 +1,112 @@
+﻿.job-details-section {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f5f5f5;
+    min-height: 50vh;
+    
+}
+
+.job-card-details {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    width: 2000px;
+    
+    font-family: Arial, sans-serif;
+}
+
+    .job-card-details h2 {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        text-align: center;
+        
+    }
+
+    
+    .job-card-details label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+
+    .job-card-details input,
+    .job-card-details textarea,
+    .job-card-details select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        font-size: 1rem;
+    }
+
+    .job-card-details textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+
+.status-applied {
+    background-color: #ccffcc;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.status-interview {
+    background-color: #ffffcc;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.status-offer {
+    background-color: #99ccff;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.status-rejected {
+    background-color: #ffcccc;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.status-default {
+    background-color: #ddd;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+/* Save button */
+.save-btn {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1rem;
+    display: block;
+    margin:20px;
+    transition: background 0.2s;
+}
+
+    .save-btn:hover {
+        background-color: royalblue;
+    }
+
+.remove-btn {
+    background-color: palevioletred;
+}
+
+remove-btn:hover {
+    background-color: rosybrown;
+}
+
+.btn-div{
+    display:flex;
+    justify-content:space-between;
+}

@@ -26,5 +26,11 @@ namespace JobTracker.Service
 
             await _context.SaveChangesAsync();
         }
+
+
+        public async Task<Jobs?> GetOne(int id)
+        {
+            return await _context.Jobs.FirstOrDefaultAsync(x => x.Id == id);
+        }
     }
 }
