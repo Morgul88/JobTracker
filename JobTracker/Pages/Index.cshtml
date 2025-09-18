@@ -6,17 +6,23 @@
 
 @{
     ViewData["Title"] = "Home page";
-}
 
+
+    
+
+}
 <link rel="stylesheet" href="~/css/index.css" />
 <script defer src="~/js/index.js" asp-append-version="true"></script>
 
 <section>
-    <div class="index-section">
 
-        <!-- Applied Column -->
+
+    <div class="index-section">
+        
         <div class="applied columns">
             <div class="text-center blue">
+
+              
                 <h2>Jobs</h2>
                 <button id="btn-toggle-view" class="btn-toggle-view">Vy</button>
                 <label>Filter</label>
@@ -26,12 +32,14 @@
                     <option value="latest">Latest</option>
                     <option value="before">Before</option>
                 </select>
+
                 <label for="maxJobs">Visa:</label>
                 <select id="maxJobs">
+            
                     <option value="5" selected>5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
-                    <option value="1000">All</option>
+                    <option value="1000" >All</option>
                 </select>
 
                 <div class="jobs-grid">
@@ -39,23 +47,28 @@
                     {
                         <a asp-page="/Details" asp-route-id="@job.Id"
                            class="job-card blue-card"
+                           id="job-card"
                            data-title="@job.Title"
                            data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
-                            <div class="flex-div">
+                           <div class="flex-div">
                                 <strong>@job.Title</strong>
                                 <p>@job.Company</p>
-                            </div>
+                                
+                             
+
+                           </div>
+                           
                         </a>
                     }
                 </div>
+                
             </div>
         </div>
-
-        <!-- Interview Column -->
         <div class="interview columns">
             <div class="text-center yellow">
+
+
                 <h2>Interview</h2>
-                <button id="btn-toggle-view" class="btn-toggle-view">Vy</button>
                 <label>Filter</label>
                 <input id="titleFilter" placeholder="Filter by title" />
                 <label for="sortSelect">Sortera:</label>
@@ -63,36 +76,34 @@
                     <option value="latest">Latest</option>
                     <option value="before">Before</option>
                 </select>
+
                 <label for="maxJobs">Visa:</label>
                 <select id="maxJobs">
+
                     <option value="5" selected>5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="1000">All</option>
                 </select>
-
                 <div class="jobs-grid">
-                    @foreach (var job in Model.Jobs.Where(j => j.Status == "Interview"))
+                    @foreach (var job in Model.Jobs
+                    .Where(j => j.Status == "Interview")
+                    .Take(Model.MaxJobs))
                     {
-                        <a asp-page="/Details" asp-route-id="@job.Id"
-                           class="job-card yellow-card"
-                           data-title="@job.Title"
-                           data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
-                            <div class="flex-div">
-                                <strong>@(job.Title ?? "Ingen titel angiven")</strong>
-                                <p>@job.Company</p>
-                            </div>
-                        </a>
+                        <div class="job-card yellow-card">
+                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
+                            <p>@job.Company</p>
+                        </div>
                     }
                 </div>
+
             </div>
         </div>
-
-        <!-- Offer Column -->
         <div class="offer columns">
             <div class="text-center green">
+
+
                 <h2>Offer</h2>
-                <button id="btn-toggle-view" class="btn-toggle-view">Vy</button>
                 <label>Filter</label>
                 <input id="titleFilter" placeholder="Filter by title" />
                 <label for="sortSelect">Sortera:</label>
@@ -100,67 +111,66 @@
                     <option value="latest">Latest</option>
                     <option value="before">Before</option>
                 </select>
+
                 <label for="maxJobs">Visa:</label>
                 <select id="maxJobs">
+
                     <option value="5" selected>5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="1000">All</option>
                 </select>
-
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Offer"))
                     {
-                        <a asp-page="/Details" asp-route-id="@job.Id"
-                           class="job-card green-card"
-                           data-title="@job.Title"
-                           data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
-                            <div class="flex-div">
-                                <strong>@(job.Title ?? "Ingen titel angiven")</strong>
-                                <p>@job.Company</p>
-                            </div>
-                        </a>
+                        <div class="job-card green-card">
+                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
+                            <p> @job.Company</p>
+                            
+                           
+                        </div>
                     }
                 </div>
+
             </div>
         </div>
-
-        <!-- Rejected Column -->
         <div class="rejected columns">
             <div class="text-center red">
+
+
                 <h2>Rejected</h2>
-                <button id="btn-toggle-view" class="btn-toggle-view">Vy</button>
                 <label>Filter</label>
                 <input id="titleFilter" placeholder="Filter by title" />
                 <label for="sortSelect">Sortera:</label>
-                <select id="sortSelect" name="sortOrder">
-                    <option value="latest">Latest</option>
+                <select  id="sortSelect" name="sortOrder">
+                    <option class="border-radius" value="latest">Latest</option>
                     <option value="before">Before</option>
                 </select>
+
                 <label for="maxJobs">Visa:</label>
                 <select id="maxJobs">
+
                     <option value="5" selected>5</option>
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="1000">All</option>
                 </select>
-
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Rejected"))
                     {
-                        <a asp-page="/Details" asp-route-id="@job.Id"
-                           class="job-card red-card"
-                           data-title="@job.Title"
-                           data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
-                            <div class="flex-div">
-                                <strong>@(job.Title ?? "Ingen titel angiven")</strong>
-                                <p>@job.Company</p>
-                            </div>
-                        </a>
+                        <div class="job-card red-card">
+                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
+                            <p> @job.Company</p>
+                           
+                        </div>
                     }
                 </div>
+
             </div>
         </div>
 
     </div>
 </section>
+
+
+
