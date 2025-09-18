@@ -1,6 +1,7 @@
 ﻿/* Globalt för sidan */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
     background-color: #f4f4f9;
     color: #333;
     margin: 0;
@@ -14,7 +15,7 @@ body {
     background-color: #ffffff;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     border-radius: 10px;
-    min-height: 800px;
+    min-height: 2000px;
     margin-bottom: 10px;
 }
 .filter-div{
@@ -129,22 +130,22 @@ ul {
     }
 
 .job-card {
-    display: flex; 
+    display: flex;
     margin-bottom: 10px;
     text-decoration: none;
     color: inherit;
     height: 60px;
     font-size: 16px;
     padding: 10px;
-    border-radius: 10px; 
+    border-radius: 10px;
     align-items: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    
+    transition: transform 0.5s, box-shadow 0.5s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
     .job-card:hover {
-        transform: translateX(5px); 
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        transform: translateX(100px) scale(1.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
 .job-card-small {
@@ -176,6 +177,7 @@ ul {
         margin-bottom: 0;
         align-items: center;
         text-align: left;
+        font-size:12px;
     }
 
     
@@ -236,18 +238,16 @@ ul {
 }*/
 
 .blue-card {
-    background-color: rgb(114, 167, 235);
+    background-color: rgb(210, 228, 245);
 }
 .red-card {
-    
-    background-color: #ff9999;
+    background-color: #ebcdc3;
 }
 .green-card {
-    
-    background-color: #99e699;
+    background-color: #c8f3c8;
 }
 .yellow-card {
-    background-color: rgb(241, 187, 87);
+    background-color: rgb(236, 206, 150);
 }
 
 .btn-yellow {

@@ -107,9 +107,12 @@
                            class="job-card yellow-card"
                            >
                             <div class="flex-div">
-                                <strong>@job.Title</strong>
-                                <p>@job.Company</p>
+                                <div>
+                                    <strong>@job.Title</strong>
+                                    <p>@job.Company</p>
+                                </div>
 
+                                <p>@job.CreatedAt</p>
 
 
                             </div>
@@ -147,13 +150,15 @@
                         <a asp-page="/Details" asp-route-id="@job.Id"
                            class="job-card green-card">
                             <div class="flex-div">
-                                <strong>@job.Title</strong>
-                                <p>@job.Company</p>
+                                <div>
+                                    <strong>@job.Title</strong>
+                                    <p>@job.Company</p>
+                                </div>
 
+                                <p>@job.CreatedAt</p>
 
 
                             </div>
-
                         </a>
                     }
                 </div>
@@ -187,9 +192,12 @@
                         <a asp-page="/Details" asp-route-id="@job.Id"
                            class="job-card red-card">
                             <div class="flex-div">
-                                <strong>@job.Title</strong>
-                                <p>@job.Company</p>
+                                <div>
+                                    <strong>@job.Title</strong>
+                                    <p>@job.Company</p>
+                                </div>
 
+                                <p>@job.CreatedAt</p>
 
 
                             </div>
