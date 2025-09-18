@@ -1,8 +1,7 @@
 ﻿/* Globalt för sidan */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
-    background-color: #f4f4f9;
+    background-color: #b0b0b0;
     color: #333;
     margin: 0;
     padding: 0;
@@ -12,31 +11,60 @@ body {
     margin: 30px auto;
     padding: 20px;
     margin: 0px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    background-color: white;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2), 0 6px 12px rgba(0,0,0,0.15);
     border-radius: 10px;
     min-height: 2000px;
     margin-bottom: 10px;
+    
 }
+    .text-center:hover {
+        
+        
+        
+    }
 .filter-div{
     text-align:left;
     padding:5px;
+}
+.filter-div i {
+    padding-right: 5px;
 }
 
 .filter-div select {
     border-radius:10px;
 }
-.text-center h2 {
-    padding-bottom: 20px;
-    text-align: left;
-    font-weight: 600;
-    font-size: 24px;
-    padding-left:20px;
+.text-center  {
+   
 }
+.head-line {
+    display: flex;
+    flex-direction: row;
+    color: #333; /* mörk text för kontrast */
+    padding: 10px 20px; /* mer kompakt än bara text-padding */
+    margin-left: 10px; /* behåll vänsterjustering */
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
+    
+    border-radius: 12px; /* rundade hörn */
+    
+    cursor: pointer; /* känns mer som knapp */
+}
+    .head-line i {
+        padding-left: 10px;
+        margin-bottom:20px;
+        
+    }
+    .head-line h2{
+        padding-right:30px;
+    }
+
 .number-count {
-    opacity:0.7;
-    font-size:20px;
-    font-weight:400;
+    opacity: 0.7;
+    font-size: 20px;
+    font-weight: 400;
 }
 .titleFilter {
     border-radius: 8px;
@@ -44,7 +72,7 @@ body {
     border: 1px solid #ccc;
     background-color: white;
     font-size: 14px;
-    appearance: none; /* Tar bort OS-standardutseendet */
+    appearance: none; 
     -webkit-appearance: none;
     -moz-appearance: none;
 }
@@ -54,7 +82,7 @@ body {
     border: 1px solid #ccc;
     background-color: white;
     font-size: 14px;
-    appearance: none; /* Tar bort OS-standardutseendet */
+    appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
 }
@@ -141,10 +169,11 @@ ul {
     align-items: center;
     transition: transform 0.5s, box-shadow 0.5s;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    width:100%;
 }
 
     .job-card:hover {
-        transform: translateX(100px) scale(1.1);
+        transform: translateX(50px) scale(1.1);
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
 
@@ -156,12 +185,12 @@ ul {
     height: 50px;
     font-size: 16px;
     padding: 10px;
-    border-radius: 5px; /* mjuka hörn om du vill */
+    border-radius: 5px;
     height: 120px;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 .job-card-small:hover {
-    transform: translateX(5px); /* liten hover-effekt */
+    transform: translateX(5px);
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
@@ -169,19 +198,23 @@ ul {
     display: flex;
     flex-direction: row;
     text-align: left;
-    gap: 10px; /* lite space mellan title och company */
+    gap: 10px;
     margin-bottom: 0;
     justify-content: space-between;
+    width:100%;
 }
     .flex-div p {
         margin-bottom: 0;
         align-items: center;
         text-align: left;
         font-size:12px;
+        
+    }
+    .flex-div i{
+        padding:0px 5px;
     }
 
     
-
     .job-card p {
        
        margin-bottom:0;
@@ -192,11 +225,12 @@ ul {
     margin: 0;
     position: relative;
     z-index: 10;
+
 }
 
 .columns{
     width:100%;
-    margin:5px;
+    margin:6px;
 }
 
 .rejected{
@@ -238,16 +272,20 @@ ul {
 }*/
 
 .blue-card {
-    background-color: rgb(210, 228, 245);
+    background-color: white;
+    border-left:6px solid green;
 }
 .red-card {
-    background-color: #ebcdc3;
+    
+    border-left: 6px solid #ebcdc3;
 }
 .green-card {
-    background-color: #c8f3c8;
+    
+    border-left: 6px solid #c8f3c8;
 }
 .yellow-card {
-    background-color: rgb(236, 206, 150);
+    
+    border-left: 6px solid rgb(236, 206, 150);
 }
 
 .btn-yellow {

@@ -1,20 +1,29 @@
-﻿.job-details-section {
+﻿body {
+    background-color: #999999;
+}
+.job-details-section {
     display: flex;
     justify-content: center;
     padding: 2rem;
-    background-color: #f5f5f5;
-    min-height: 50vh;
+    background-color: #999999;
+    min-height: 500vh;
 }
 
 .job-card-details {
-    background-color: #fff;
+    background-color: white;
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
     width: 2000px;
     font-family: Arial, sans-serif;
+    
 }
 
+.head-class {
+    display: flex;
+    padding: 10px;
+    background-color: #222222;
+}
     .job-card-details h2 {
         margin-bottom: 1rem;
         font-size: 2rem;

@@ -13,6 +13,8 @@
 }
 <link rel="stylesheet" href="~/css/index.css" />
 <script defer src="~/js/index.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
 
 
 
@@ -23,11 +25,14 @@
         <div class="applied columns">
             <div class="text-center blue">
 
-              
-                <h2>Applied <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Applied"))</strong></h2>
-               @*  <button id="btn-toggle-view" class="btn-toggle-view">V</button> *@
+                <div class="head-line">
+                    <h2>Applied <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Applied"))</strong></h2>
+                    
+                </div>
+           
+             
                 <div class="filter-div">
-                   
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                     <input class="titleFilter" placeholder="Filter by title or company" />
                 
                     <select id="sortSelect" name="sortOrder">
@@ -63,10 +68,18 @@
                                <div>
                                     <strong>@job.Title</strong>
                                     <p>@job.Company</p>
+                                    @if (!string.IsNullOrWhiteSpace(job.Notes))
+                                    {
+                                        <p><i class="fas fa-thumbtack fa-lg"></i> @job.Notes</p>
+                                    }
                                </div>
-                               
-                                <p>@job.CreatedAt</p>
-                             
+                               <div>
+                                    
+                                    <p>@job.CreatedAt</p>
+                                   
+                               </div>
+                                
+                                
 
                            </div>
                            
@@ -80,23 +93,31 @@
             <div class="text-center yellow">
 
 
-                <h2>Interview (@Model.Jobs.Count(j => j.Status == "Interview"))</h2>
-                <label>Filter</label>
-                <input id="titleFilter" placeholder="Filter by title" />
-                <label for="sortSelect">Sortera:</label>
-                <select id="sortSelect" name="sortOrder">
-                    <option value="latest">Latest</option>
-                    <option value="before">Before</option>
-                </select>
+                <div class="head-line">
+                    <h2>Interview <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Interview"))</strong></h2>
+                    <i class="fas fa-thumbtack fa-lg"></i>
+                </div>
 
-                <label for="maxJobs">Visa:</label>
-                <select id="maxJobs">
 
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="1000">All</option>
-                </select>
+                <div class="filter-div">
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                    <input class="titleFilter" placeholder="Filter by title or company" />
+
+                    <select id="sortSelect" name="sortOrder">
+                        <option selected value="latest">Latest</option>
+                        <option value="before">Before</option>
+                    </select>
+
+
+                    <select id="maxJobs" class="maxJobs">
+
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="100000" selected>All</option>
+                    </select>
+                </div>
+
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs
                     .Where(j => j.Status == "Interview"))
@@ -110,6 +131,7 @@
                                 <div>
                                     <strong>@job.Title</strong>
                                     <p>@job.Company</p>
+                                    <p>Notes: @job.Notes</p>
                                 </div>
 
                                 <p>@job.CreatedAt</p>
@@ -126,24 +148,31 @@
         <div class="offer columns">
             <div class="text-center green">
 
+                <div class="head-line">
+                    <h2>Offer <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Offer"))</strong></h2>
+                    <i class="fas fa-thumbtack fa-lg"></i>
+                </div>
 
-                <h2>Offer (@Model.Jobs.Count(j => j.Status == "Offer"))</h2>
-                <label>Filter</label>
-                <input id="titleFilter" placeholder="Filter by title" />
-                <label for="sortSelect">Sortera:</label>
-                <select id="sortSelect" name="sortOrder">
-                    <option value="latest">Latest</option>
-                    <option value="before">Before</option>
-                </select>
 
-                <label for="maxJobs">Visa:</label>
-                <select id="maxJobs">
+                <div class="filter-div">
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                    <input class="titleFilter" placeholder="Filter by title or company" />
 
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="1000">All</option>
-                </select>
+                    <select id="sortSelect" name="sortOrder">
+                        <option selected value="latest">Latest</option>
+                        <option value="before">Before</option>
+                    </select>
+
+
+                    <select id="maxJobs" class="maxJobs">
+
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="100000" selected>All</option>
+                    </select>
+                </div>
+
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Offer"))
                     {
@@ -168,24 +197,31 @@
         <div class="rejected columns">
             <div class="text-center red">
 
+                <div class="head-line">
+                    <h2>Rejected <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Rejected"))</strong></h2>
+                    <i class="fas fa-thumbtack fa-lg"></i>
+                </div>
 
-                <h2>Rejected (@Model.Jobs.Count(j => j.Status == "Rejected"))</h2>
-                <label>Filter</label>
-                <input id="titleFilter" placeholder="Filter by title" />
-                <label for="sortSelect">Sortera:</label>
-                <select  id="sortSelect" name="sortOrder">
-                    <option class="border-radius" value="latest">Latest</option>
-                    <option value="before">Before</option>
-                </select>
 
-                <label for="maxJobs">Visa:</label>
-                <select id="maxJobs">
+                <div class="filter-div">
+                    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                    <input class="titleFilter" placeholder="Filter by title or company" />
 
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="1000">All</option>
-                </select>
+                    <select id="sortSelect" name="sortOrder">
+                        <option selected value="latest">Latest</option>
+                        <option value="before">Before</option>
+                    </select>
+
+
+                    <select id="maxJobs" class="maxJobs">
+
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="100000" selected>All</option>
+                    </select>
+                </div>
+
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Rejected"))
                     {
