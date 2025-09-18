@@ -21,7 +21,7 @@ namespace JobTracker.Pages
         [BindProperty]
         public int MaxJobs { get; set; } = 5; // default
 
-
+        
 
         public IndexModel(ILogger<IndexModel> logger, JobService jobService)
         {

@@ -1,64 +1,111 @@
-﻿.form-section {
+﻿.job-details-section {
     display: flex;
     justify-content: center;
-    align-items: center;
     padding: 2rem;
+    background-color: #f5f5f5;
+    min-height: 50vh;
 }
 
-.form-div {
-    width: 100%;
-    max-width: 500px;
-    padding: 40px;
+.job-card-details {
+    background-color: #fff;
+    padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    width: 2000px;
+    font-family: Arial, sans-serif;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-    .form-group label {
-        margin-bottom: 5px;
-        font-weight: 600;
-        padding-left: 5px;
+    .job-card-details h2 {
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        text-align: center;
     }
 
-    .form-group input,
-    .form-group select {
-        padding: 12px;
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        font-size: 16px;
+
+    .job-card-details label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+
+    .job-card-details input,
+    .job-card-details textarea,
+    .job-card-details select {
         width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
         box-sizing: border-box;
+        font-size: 1rem;
     }
 
-form span {
-    color: red;
-    font-size: 0.9rem;
-    padding-left: 5px;
+    .job-card-details textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+
+
+.status-applied {
+    background-color: lightskyblue;
+    padding: 3px 10px;
+    border-radius: 12px;
 }
 
-form button {
-    margin-top: 1rem;
-    padding: 12px;
-    border-radius: 25px;
+
+
+.status-interview {
+    background-color: #ffffcc;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.status-offer {
+    background-color: #ccffcc;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.status-rejected {
+    background-color: #ffcccc;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+.status-default {
+    background-color: #ddd;
+    padding: 3px 10px;
+    border-radius: 12px;
+}
+
+/* Save button */
+.save-btn {
     background-color: cornflowerblue;
     color: white;
-    font-weight: bold;
+    padding: 12px 25px;
+    border-radius: 20px;
     border: none;
-    font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    font-size: 1rem;
+    display: block;
+    margin: 20px;
+    transition: background 0.2s;
 }
 
-    form button:hover {
+    .save-btn:hover {
         background-color: royalblue;
     }
+
+.remove-btn {
+    background-color: palevioletred;
+}
+
+remove-btn:hover {
+    background-color: rosybrown;
+}
+
+.btn-div {
+    display: flex;
+    justify-content: space-between;
+}

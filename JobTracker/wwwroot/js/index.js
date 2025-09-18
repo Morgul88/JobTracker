@@ -1,21 +1,14 @@
-﻿const input = document.getElementById("titleFilter");
-
-
-
-
-
-input.addEventListener('input', () => {
-    var filter = input.value.toLowerCase();
-    
-
-    var card = document.querySelectorAll('.job-card').forEach(card => {
-        console.log()
-        const title = card.dataset.title.toLowerCase();
-        console.log(title)
-        card.style.display = title.includes(filter) ? "block" : "none";
+﻿document.querySelectorAll('.titleFilter').forEach(input => {
+    input.addEventListener('input', () => {
+        const filter = input.value.toLowerCase();
+        document.querySelectorAll('.job-card').forEach(card => {
+            const title = (card.dataset.title || "").toLowerCase();
+            const company = (card.dataset.company || "").toLowerCase();
+            card.style.display = (title.includes(filter) || company.includes(filter)) ? "block" : "none";
+        });
     });
+});
 
-})
 document.addEventListener('DOMContentLoaded', () => {
     const sortSelect = document.getElementById('sortSelect');
     const jobsGrid = document.querySelector('.jobs-grid');
@@ -43,8 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         jobCards.forEach(card => jobsGrid.appendChild(card));
     });
 });
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const input = document.getElementById('titleFilter');
@@ -84,14 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateJobs();
 });
 
-
-
 const button = document.getElementById("btn-toggle-view");
 const jobClass = document.querySelectorAll(".job-card");
-console.log(button)
-console.log(jobClass)
-let isActive = false;
 
+let isActive = false;
 
 button.addEventListener('click', () => {
     isActive = !isActive
@@ -105,3 +92,24 @@ button.addEventListener('click', () => {
         }
     });
 });
+
+//const buttonForm = document.getElementById("add-job");
+//console.log(buttonForm)
+//let formActive = false;
+//console.log(formActive)
+//const formLetter = document.querySelector(".form-section")
+//console.log(formLetter)
+//buttonForm.addEventListener('click', () => {
+//    formActive = !formActive;
+//    console.log("hello")
+//    console.log(formActive)
+//    if (!formActive) {
+//        formLetter.classList.add('form-section-remove');
+//    } else {
+//        formLetter.classList.remove('form-section-remove');
+//    }
+    
+
+//});
+
+

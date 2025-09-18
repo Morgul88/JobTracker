@@ -14,46 +14,58 @@
 <link rel="stylesheet" href="~/css/index.css" />
 <script defer src="~/js/index.js" asp-append-version="true"></script>
 
+
+
 <section>
-
-
+   
     <div class="index-section">
         
         <div class="applied columns">
             <div class="text-center blue">
 
               
-                <h2>Jobs</h2>
-                <button id="btn-toggle-view" class="btn-toggle-view">Vy</button>
-                <label>Filter</label>
-                <input id="titleFilter" placeholder="Filter by title" />
-                <label for="sortSelect">Sortera:</label>
-                <select id="sortSelect" name="sortOrder">
-                    <option value="latest">Latest</option>
-                    <option value="before">Before</option>
-                </select>
+                <h2>Applied <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Applied"))</strong></h2>
+               @*  <button id="btn-toggle-view" class="btn-toggle-view">V</button> *@
+                <div class="filter-div">
+                   
+                    <input class="titleFilter" placeholder="Filter by title or company" />
+                
+                    <select id="sortSelect" name="sortOrder">
+                        <option selected value="latest">Latest</option>
+                        <option value="before">Before</option>
+                    </select>
 
-                <label for="maxJobs">Visa:</label>
-                <select id="maxJobs">
-            
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                    <option value="1000" >All</option>
-                </select>
+                  
+                    <select id="maxJobs" class="maxJobs">
 
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="100000" selected>All</option>
+                    </select>
+                </div>
+                
+                
+
+                
+                
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Applied"))
                     {
+                        
                         <a asp-page="/Details" asp-route-id="@job.Id"
                            class="job-card blue-card"
                            id="job-card"
                            data-title="@job.Title"
+                           data-company="@job.Company"
                            data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
                            <div class="flex-div">
-                                <strong>@job.Title</strong>
-                                <p>@job.Company</p>
-                                
+                               <div>
+                                    <strong>@job.Title</strong>
+                                    <p>@job.Company</p>
+                               </div>
+                               
+                                <p>@job.CreatedAt</p>
                              
 
                            </div>
@@ -68,7 +80,7 @@
             <div class="text-center yellow">
 
 
-                <h2>Interview</h2>
+                <h2>Interview (@Model.Jobs.Count(j => j.Status == "Interview"))</h2>
                 <label>Filter</label>
                 <input id="titleFilter" placeholder="Filter by title" />
                 <label for="sortSelect">Sortera:</label>
@@ -87,13 +99,22 @@
                 </select>
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs
-                    .Where(j => j.Status == "Interview")
-                    .Take(Model.MaxJobs))
+                    .Where(j => j.Status == "Interview"))
                     {
-                        <div class="job-card yellow-card">
-                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
-                            <p>@job.Company</p>
-                        </div>
+                        
+
+                        <a asp-page="/Details" asp-route-id="@job.Id"
+                           class="job-card yellow-card"
+                           >
+                            <div class="flex-div">
+                                <strong>@job.Title</strong>
+                                <p>@job.Company</p>
+
+
+
+                            </div>
+
+                        </a>
                     }
                 </div>
 
@@ -103,7 +124,7 @@
             <div class="text-center green">
 
 
-                <h2>Offer</h2>
+                <h2>Offer (@Model.Jobs.Count(j => j.Status == "Offer"))</h2>
                 <label>Filter</label>
                 <input id="titleFilter" placeholder="Filter by title" />
                 <label for="sortSelect">Sortera:</label>
@@ -123,12 +144,17 @@
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Offer"))
                     {
-                        <div class="job-card green-card">
-                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
-                            <p> @job.Company</p>
-                            
-                           
-                        </div>
+                        <a asp-page="/Details" asp-route-id="@job.Id"
+                           class="job-card green-card">
+                            <div class="flex-div">
+                                <strong>@job.Title</strong>
+                                <p>@job.Company</p>
+
+
+
+                            </div>
+
+                        </a>
                     }
                 </div>
 
@@ -138,7 +164,7 @@
             <div class="text-center red">
 
 
-                <h2>Rejected</h2>
+                <h2>Rejected (@Model.Jobs.Count(j => j.Status == "Rejected"))</h2>
                 <label>Filter</label>
                 <input id="titleFilter" placeholder="Filter by title" />
                 <label for="sortSelect">Sortera:</label>
@@ -158,11 +184,17 @@
                 <div class="jobs-grid">
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Rejected"))
                     {
-                        <div class="job-card red-card">
-                            <strong>@(job.Title ?? "Ingen titel angiven")</strong>
-                            <p> @job.Company</p>
-                           
-                        </div>
+                        <a asp-page="/Details" asp-route-id="@job.Id"
+                           class="job-card red-card">
+                            <div class="flex-div">
+                                <strong>@job.Title</strong>
+                                <p>@job.Company</p>
+
+
+
+                            </div>
+
+                        </a>
                     }
                 </div>
 

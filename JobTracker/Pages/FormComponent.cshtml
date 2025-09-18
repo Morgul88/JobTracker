@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="~/css/Form.css"/>
 
-<section class="form-section">
+@* <section class="form-section">
     <div class="form-div">
         <h2>Lägg till ansökan</h2>
         <form method="post">
@@ -44,4 +44,49 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+</section> *@
+<section class="job-details-section">
+    
+        <form method="post">
+            <div class="job-card-details">
+                <label>Title:</label>
+                <input asp-for="Job.Title" />
+                <input type="hidden" asp-for="Job.Id" />
+                <label>Company:</label>
+                <input asp-for="Job.Company" />
+
+                <label>Applied:</label>
+                <input asp-for="Job.CreatedAt" />
+
+
+                <label>Updated:</label>
+                <input asp-for="Job.UpdatedAt" />
+
+                <label>Description:</label>
+                <textarea asp-for="Job.Description"></textarea>
+
+                <label>Notes:</label>
+                <textarea asp-for="Job.Notes"></textarea>
+
+                <label>Contact:</label>
+                <input asp-for="Job.Contact" />
+
+
+                <label>Status:</label>
+                <select asp-for="Job.Status">
+                    <option value="Applied">Applied</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Offer">Offer</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+
+
+                <div class="btn-div">
+                    <button type="submit" class="save-btn">Save</button>
+                    <button  class="save-btn remove-btn">Remove</button>
+                </div>
+
+            </div>
+        </form>
+    
 </section>
