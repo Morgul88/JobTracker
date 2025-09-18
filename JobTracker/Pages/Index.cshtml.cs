@@ -3,6 +3,7 @@ using JobTracker.Model;
 using JobTracker.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.IdentityModel.Tokens;
 
 namespace JobTracker.Pages
 {
@@ -10,11 +11,17 @@ namespace JobTracker.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly JobService _jobService;
+
         [BindProperty]
         public Jobs Job { get; set; } = new Jobs();
         public IList<Jobs> Jobs { get; set; } = new List<Jobs>();
 
         public Jobs? SelectedJob { get; set; }
+
+        [BindProperty]
+        public int MaxJobs { get; set; } = 5; // default
+
+
 
         public IndexModel(ILogger<IndexModel> logger, JobService jobService)
         {
@@ -50,5 +57,7 @@ namespace JobTracker.Pages
             return RedirectToPage("Index");
 
         }
+
+        
     }
 }

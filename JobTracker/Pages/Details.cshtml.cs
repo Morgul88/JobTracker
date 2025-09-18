@@ -19,6 +19,8 @@ namespace JobTracker.Pages
             _jobService = jobService;
         }
 
+
+        [BindProperty]
         public Jobs? SelectedJob { get; set; }
 
 
@@ -33,6 +35,24 @@ namespace JobTracker.Pages
                 return NotFound();
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            var updatedJob = await _jobService.UpdateOne(SelectedJob);
+            
+            if(updatedJob == null)
+            {
+                return NotFound();
+            }
+
+            return RedirectToPage("index");
+            
         }
     }
 }

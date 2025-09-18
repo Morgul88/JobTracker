@@ -50,10 +50,12 @@
 
 
 .status-applied {
-    background-color: #ccffcc;
+    background-color: lightskyblue;
     padding: 3px 10px;
     border-radius: 12px;
 }
+
+
 
 .status-interview {
     background-color: #ffffcc;
@@ -62,7 +64,7 @@
 }
 
 .status-offer {
-    background-color: #99ccff;
+    background-color: #ccffcc;
     padding: 3px 10px;
     border-radius: 12px;
 }

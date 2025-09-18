@@ -42,4 +42,29 @@ body {
 
 .head-class{
     display:flex;
+    padding:10px;
+}
+.head-class a{
+    padding:20px 30px;
+    text-decoration:none;
+    color:black;
+    font-weight:600;
+    font-size:20px;
+    
+}
+.navbar{
+    background-color:red;
+}
+
+
+
+footer {
+    
+    color: white;
+    margin-top: 10px;
+}
+
+
+main{
+    padding-bottom:0;
 }

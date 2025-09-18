@@ -2,7 +2,13 @@
 @model JobTracker.Pages.DetailsModel
 @{
     ViewData["Title"] = "Job Details";
+    
+
+    
 }
+
+
+
 <link rel="stylesheet" href="~/css/Details.css" />
 
 <section class="job-details-section">
@@ -12,12 +18,16 @@
             <div class="job-card-details">
                 <label>Title:</label>
                 <input asp-for="SelectedJob.Title" />
-
+                <input type="hidden" asp-for="SelectedJob.Id" />
                 <label>Company:</label>
                 <input asp-for="SelectedJob.Company" />
 
                 <label>Applied:</label>
                 <input asp-for="SelectedJob.CreatedAt" />
+
+
+                <label>Updated:</label>
+                <input asp-for="SelectedJob.UpdatedAt" />
 
                 <label>Description:</label>
                 <textarea asp-for="SelectedJob.Description"></textarea>
@@ -27,6 +37,7 @@
 
                 <label>Contact:</label>
                 <input asp-for="SelectedJob.Contact" />
+
 
                 <label>Status:</label>
                 <select asp-for="SelectedJob.Status">

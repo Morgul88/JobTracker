@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Http.HttpResults;
+
 namespace JobTracker.Service
 {
     public class JobService
@@ -30,7 +32,49 @@ namespace JobTracker.Service
 
         public async Task<Jobs?> GetOne(int id)
         {
-            return await _context.Jobs.FirstOrDefaultAsync(x => x.Id == id);
+            
+            var result =  await _context.Jobs.FirstOrDefaultAsync(x => x.Id == id);
+
+            if(result != null)
+            {
+                return result;
+            }
+            else
+            {
+                return NotFound();
+            }
+        
         }
+
+        private Jobs? NotFound()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Jobs?> UpdateOne(Jobs job)
+        {
+            var jobToUpdate = await _context.Jobs.FirstOrDefaultAsync(x => x.Id == job.Id);
+
+            if (jobToUpdate != null)
+            {
+                jobToUpdate.Title = job.Title;
+                jobToUpdate.Company = job.Company;
+                jobToUpdate.Description = job.Description;
+                jobToUpdate.Status = job.Status;
+                jobToUpdate.Notes = job.Notes;
+                jobToUpdate.Contact = job.Contact;
+                jobToUpdate.CreatedAt = job.CreatedAt;
+                jobToUpdate.UpdatedAt = DateTime.Now;
+                await _context.SaveChangesAsync();
+
+                return jobToUpdate;
+
+            }
+
+            return null;
+            
+        }
+
+
     }
 }
