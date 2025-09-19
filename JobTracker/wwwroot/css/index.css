@@ -169,12 +169,14 @@ ul {
     align-items: center;
     transition: transform 0.5s, box-shadow 0.5s;
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    width:100%;
+    width: 100%;
+    
 }
 
     .job-card:hover {
         transform: translateX(50px) scale(1.1);
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        
     }
 
 .job-card-small {
@@ -212,13 +214,17 @@ ul {
     }
     .flex-div i{
         padding:0px 5px;
+        
     }
-
-    
-    .job-card p {
-       
-       margin-bottom:0;
-    }
+.green-mark {
+    color: green;
+}
+.red-hand{
+    color:red;
+}
+.job-card p {
+    margin-bottom: 0;
+}
 .index-section {
     display: flex;
     flex-direction: row;
@@ -275,18 +281,35 @@ ul {
     background-color: white;
     border-left:6px solid green;
 }
+    .blue-card:hover {
+        border-top: 2px solid #c8f3c8;
+        border-bottom: 1px solid green;
+        background-color: #c8f3c8;
+    }
 .red-card {
-    
-    border-left: 6px solid #ebcdc3;
+    border-left: 6px solid #FF6347;
 }
+    .red-card:hover {
+        border-top: 2px solid #FF6347;
+        border-bottom: 1px solid #FF6347;
+        background-color: #e9b2b2;
+    }
 .green-card {
-    
-    border-left: 6px solid #c8f3c8;
+    border-left: 6px solid #4169E1;
 }
+    .green-card:hover {
+        
+        border-bottom: 2px solid #4169E1;
+        background-color: rgb(151, 201, 248);
+    }
 .yellow-card {
     
     border-left: 6px solid rgb(236, 206, 150);
 }
+    .yellow-card:hover {
+        background-color: rgb(246, 220, 175);
+        border-bottom: 2px solid rgb(236, 206, 150);
+    }
 
 .btn-yellow {
     width: 15px;
@@ -399,3 +422,7 @@ form button {
     form button:hover {
         background-color: royalblue;
     }
+
+.p-div-rejected{
+    padding-left:25px;
+}

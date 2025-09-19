@@ -70,6 +70,7 @@
                            <div class="flex-div">
                                <div>
                                     <strong>@job.Title</strong>
+                                    <i class="fa-solid fa-circle-check green-mark"></i>
                                     <p>@job.Company</p>
                                     @if (!string.IsNullOrWhiteSpace(job.Notes))
                                     {
@@ -133,6 +134,7 @@
                             <div class="flex-div">
                                 <div>
                                     <strong>@job.Title</strong>
+                                    <i class="fa-solid fa-person-walking-luggage"></i>
                                     <p>@job.Company</p>
                                     <p>Notes: @job.Notes</p>
                                 </div>
@@ -184,6 +186,7 @@
                             <div class="flex-div">
                                 <div>
                                     <strong>@job.Title</strong>
+                                    <i class="fa-solid fa-briefcase"></i>
                                     <p>@job.Company</p>
                                 </div>
 
@@ -232,12 +235,14 @@
                            class="job-card red-card">
                             <div class="flex-div">
                                 <div>
+                                    
                                     <strong>@job.Title</strong>
-                                    <p>@job.Company</p>
+                                    <i class="fa-solid fa-circle-stop red-hand"></i>
+                                    <p class="p-div-rejected">@job.Company</p>
                                 </div>
-
+                                
                                 <p>@job.CreatedAt</p>
-
+                                
 
                             </div>
 
