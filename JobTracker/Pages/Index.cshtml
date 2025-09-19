@@ -101,7 +101,7 @@
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Interview").OrderByDescending(j => j.CreatedAt))
                     {
                         <a asp-page="/Details" asp-route-id="@job.Id"
-                           class="job-card yellow-card"
+                           class="job-card yellow-card job-card-int"
                            data-title="@job.Title"
                            data-company="@job.Company"
                            data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
@@ -148,7 +148,7 @@
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Offer").OrderByDescending(j => j.CreatedAt))
                     {
                         <a asp-page="/Details" asp-route-id="@job.Id"
-                           class="job-card green-card"
+                           class="job-card green-card job-card-offer"
                            data-title="@job.Title"
                            data-company="@job.Company"
                            data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
@@ -194,7 +194,7 @@
                     @foreach (var job in Model.Jobs.Where(j => j.Status == "Rejected").OrderByDescending(j => j.CreatedAt))
                     {
                         <a asp-page="/Details" asp-route-id="@job.Id"
-                           class="job-card red-card"
+                           class="job-card red-card job-card-rej"
                            data-title="@job.Title"
                            data-company="@job.Company"
                            data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">

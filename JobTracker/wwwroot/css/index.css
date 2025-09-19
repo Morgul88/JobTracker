@@ -177,7 +177,18 @@ ul {
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         
     }
-
+    .job-card-rej:hover {
+        transform: translateX(-50px) scale(1.1);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+.job-card-int:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.job-card-offer:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 .job-card-small {
     display: block;
     margin-bottom: 10px;
