@@ -5,7 +5,7 @@
     display: flex;
     justify-content: center;
     padding: 2rem;
-    background-color: #999999;
+    background-color: rgb(206, 201, 201);
     min-height: 500vh;
 }
 
@@ -22,7 +22,7 @@
 .head-class {
     display: flex;
     padding: 10px;
-    background-color: #222222;
+    background-color: rgb(206, 201, 201);
 }
     .job-card-details h2 {
         margin-bottom: 1rem;

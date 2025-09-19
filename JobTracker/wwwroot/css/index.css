@@ -1,7 +1,7 @@
 ﻿/* Globalt för sidan */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #b0b0b0;
+    background-color: rgb(206, 201, 201);
     color: #333;
     margin: 0;
     padding: 0;
@@ -16,7 +16,6 @@ body {
     border-radius: 10px;
     min-height: 2000px;
     margin-bottom: 10px;
-    
 }
     .text-center:hover {
         
@@ -149,7 +148,7 @@ ul {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
     .jobs-grid a {
@@ -162,9 +161,9 @@ ul {
     margin-bottom: 10px;
     text-decoration: none;
     color: inherit;
-    height: 60px;
+    height: 65px;
     font-size: 16px;
-    padding: 10px;
+    padding:2px 15px 0px 10px;
     border-radius: 10px;
     align-items: center;
     transition: transform 0.5s, box-shadow 0.5s;
@@ -228,10 +227,10 @@ ul {
 .index-section {
     display: flex;
     flex-direction: row;
-    margin: 0;
+    
     position: relative;
     z-index: 10;
-
+    margin:0 30px 0 30px;
 }
 
 .columns{
@@ -423,6 +422,3 @@ form button {
         background-color: royalblue;
     }
 
-.p-div-rejected{
-    padding-left:25px;
-}

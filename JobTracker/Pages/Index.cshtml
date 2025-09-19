@@ -19,56 +19,42 @@
 
 
 <section>
-   
     <div class="index-section">
-        
+
+        <!-- Applied Column -->
         <div class="applied columns">
             <div class="text-center blue">
-
                 <div class="head-line">
                     <h2>Applied <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Applied"))</strong></h2>
-                    
                 </div>
-           
-             
+
                 <div class="filter-div">
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                     <input class="titleFilter" placeholder="Filter by title or company" />
-                
-                    <select id="sortSelect" name="sortOrder">
+
+                 @*    <select class="sortSelect" name="sortOrder">
                         <option selected value="latest">Latest</option>
                         <option value="before">Before</option>
-                    </select>
+                    </select> *@
 
-                  
-                    <select id="maxJobs" class="maxJobs">
-
+                    <select class="maxJobs">
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="20">20</option>
                         <option value="100000" selected>All</option>
                     </select>
                 </div>
-                
-                
 
-                
-                
                 <div class="jobs-grid">
-                    @foreach (var job in Model.Jobs
-                    .Where(j => j.Status == "Applied")
-                    .OrderByDescending(j => j.CreatedAt)
-                    )
+                    @foreach (var job in Model.Jobs.Where(j => j.Status == "Applied").OrderByDescending(j => j.CreatedAt))
                     {
-                        
                         <a asp-page="/Details" asp-route-id="@job.Id"
                            class="job-card blue-card"
-                           id="job-card"
                            data-title="@job.Title"
                            data-company="@job.Company"
                            data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
-                           <div class="flex-div">
-                               <div>
+                            <div class="flex-div">
+                                <div>
                                     <strong>@job.Title</strong>
                                     <i class="fa-solid fa-circle-check green-mark"></i>
                                     <p>@job.Company</p>
@@ -76,45 +62,34 @@
                                     {
                                         <p><i class="fas fa-thumbtack fa-lg"></i> @job.Notes</p>
                                     }
-                               </div>
-                               <div>
-                                    
+                                </div>
+                                <div>
                                     <p>@job.CreatedAt</p>
-                                   
-                               </div>
-                                
-                                
-
-                           </div>
-                           
+                                </div>
+                            </div>
                         </a>
                     }
                 </div>
-                
             </div>
         </div>
+
+        <!-- Interview Column -->
         <div class="interview columns">
             <div class="text-center yellow">
-
-
                 <div class="head-line">
                     <h2>Interview <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Interview"))</strong></h2>
-                    <i class="fas fa-thumbtack fa-lg"></i>
                 </div>
-
 
                 <div class="filter-div">
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                     <input class="titleFilter" placeholder="Filter by title or company" />
 
-                    <select id="sortSelect" name="sortOrder">
+                 @*    <select class="sortSelect" name="sortOrder">
                         <option selected value="latest">Latest</option>
                         <option value="before">Before</option>
-                    </select>
+                    </select> *@
 
-
-                    <select id="maxJobs" class="maxJobs">
-
+                    <select class="maxJobs">
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="20">20</option>
@@ -123,14 +98,13 @@
                 </div>
 
                 <div class="jobs-grid">
-                    @foreach (var job in Model.Jobs
-                    .Where(j => j.Status == "Interview"))
+                    @foreach (var job in Model.Jobs.Where(j => j.Status == "Interview").OrderByDescending(j => j.CreatedAt))
                     {
-                        
-
                         <a asp-page="/Details" asp-route-id="@job.Id"
                            class="job-card yellow-card"
-                           >
+                           data-title="@job.Title"
+                           data-company="@job.Company"
+                           data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
                             <div class="flex-div">
                                 <div>
                                     <strong>@job.Title</strong>
@@ -138,39 +112,31 @@
                                     <p>@job.Company</p>
                                     <p>Notes: @job.Notes</p>
                                 </div>
-
                                 <p>@job.CreatedAt</p>
-
-
                             </div>
-
                         </a>
                     }
                 </div>
-
             </div>
         </div>
+
+        <!-- Offer Column -->
         <div class="offer columns">
             <div class="text-center green">
-
                 <div class="head-line">
                     <h2>Offer <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Offer"))</strong></h2>
-                    <i class="fas fa-thumbtack fa-lg"></i>
                 </div>
-
 
                 <div class="filter-div">
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                     <input class="titleFilter" placeholder="Filter by title or company" />
 
-                    <select id="sortSelect" name="sortOrder">
+                @*     <select class="sortSelect" name="sortOrder">
                         <option selected value="latest">Latest</option>
                         <option value="before">Before</option>
-                    </select>
+                    </select> *@
 
-
-                    <select id="maxJobs" class="maxJobs">
-
+                    <select class="maxJobs">
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="20">20</option>
@@ -179,48 +145,44 @@
                 </div>
 
                 <div class="jobs-grid">
-                    @foreach (var job in Model.Jobs.Where(j => j.Status == "Offer"))
+                    @foreach (var job in Model.Jobs.Where(j => j.Status == "Offer").OrderByDescending(j => j.CreatedAt))
                     {
                         <a asp-page="/Details" asp-route-id="@job.Id"
-                           class="job-card green-card">
+                           class="job-card green-card"
+                           data-title="@job.Title"
+                           data-company="@job.Company"
+                           data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
                             <div class="flex-div">
                                 <div>
                                     <strong>@job.Title</strong>
                                     <i class="fa-solid fa-briefcase"></i>
                                     <p>@job.Company</p>
                                 </div>
-
                                 <p>@job.CreatedAt</p>
-
-
                             </div>
                         </a>
                     }
                 </div>
-
             </div>
         </div>
+
+        <!-- Rejected Column -->
         <div class="rejected columns">
             <div class="text-center red">
-
                 <div class="head-line">
                     <h2>Rejected <strong class="number-count">(@Model.Jobs.Count(j => j.Status == "Rejected"))</strong></h2>
-                    <i class="fas fa-thumbtack fa-lg"></i>
                 </div>
-
 
                 <div class="filter-div">
                     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
                     <input class="titleFilter" placeholder="Filter by title or company" />
 
-                    <select id="sortSelect" name="sortOrder">
+                    @* <select class="sortSelect" name="sortOrder">
                         <option selected value="latest">Latest</option>
                         <option value="before">Before</option>
-                    </select>
+                    </select> *@
 
-
-                    <select id="maxJobs" class="maxJobs">
-
+                    <select class="maxJobs">
                         <option value="5">5</option>
                         <option value="10">10</option>
                         <option value="20">20</option>
@@ -229,32 +191,26 @@
                 </div>
 
                 <div class="jobs-grid">
-                    @foreach (var job in Model.Jobs.Where(j => j.Status == "Rejected"))
+                    @foreach (var job in Model.Jobs.Where(j => j.Status == "Rejected").OrderByDescending(j => j.CreatedAt))
                     {
                         <a asp-page="/Details" asp-route-id="@job.Id"
-                           class="job-card red-card">
+                           class="job-card red-card"
+                           data-title="@job.Title"
+                           data-company="@job.Company"
+                           data-date="@job.CreatedAt.ToString("yyyy-MM-dd")">
                             <div class="flex-div">
                                 <div>
-                                    
                                     <strong>@job.Title</strong>
                                     <i class="fa-solid fa-circle-stop red-hand"></i>
                                     <p class="p-div-rejected">@job.Company</p>
                                 </div>
-                                
                                 <p>@job.CreatedAt</p>
-                                
-
                             </div>
-
                         </a>
                     }
                 </div>
-
             </div>
         </div>
 
     </div>
 </section>
-
-
-

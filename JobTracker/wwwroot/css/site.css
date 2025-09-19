@@ -11,7 +11,9 @@ html {
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
-
+header {
+    background-color: rgb(206, 201, 201);
+}
 html {
   position: relative;
   min-height: 100%;
@@ -43,6 +45,7 @@ body {
 .head-class {
     display: flex;
     padding: 10px;
+    margin: 0 30px 
 }
 
     .head-class a {
