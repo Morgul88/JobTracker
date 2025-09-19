@@ -55,7 +55,10 @@
                 
                 
                 <div class="jobs-grid">
-                    @foreach (var job in Model.Jobs.Where(j => j.Status == "Applied"))
+                    @foreach (var job in Model.Jobs
+                    .Where(j => j.Status == "Applied")
+                    .OrderByDescending(j => j.CreatedAt)
+                    )
                     {
                         
                         <a asp-page="/Details" asp-route-id="@job.Id"

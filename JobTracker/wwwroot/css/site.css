@@ -48,21 +48,21 @@ body {
     .head-class a {
         padding: 20px 30px;
         text-decoration: none;
-        border: 1px solid black;
+        width:250px;
         font-weight: 600;
         font-size: 20px;
-        color: white;
+        color: black;
         margin: 5px;
         border-radius: 20px;
-        background-color: #1a1a1a; /* mörk bakgrund för kontrast */
-        /* Lägg till skugga */
+        background-color: white; 
+        
         box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        /* Smidig transition för hover */
+        
         transition: all 0.3s ease;
     }
 
         .head-class a:hover {
-            border: 2px solid black;
+            
             background-color: white;
             color: black;
             /* Mer skugga och lite “lyft” vid hover */
