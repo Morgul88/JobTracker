@@ -23,9 +23,10 @@ namespace JobTracker.Pages
         [BindProperty]
         public Jobs? SelectedJob { get; set; }
 
+        [BindProperty]
+        public string? Message { get; set; }
 
 
-        
 
         public async Task<IActionResult> OnGetAsync(int id)
         {
@@ -37,21 +38,46 @@ namespace JobTracker.Pages
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(string action)
         {
+            
+
+            if(action == "remove")
+            {
+                var result = await _jobService.RemoveOne(SelectedJob);
+
+                if(result != null)
+                {
+                    return RedirectToPage("index", new { Message = "The applied job was deleted successfully"});
+                }
+
+                return NotFound();
+
+            }
+
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var updatedJob = await _jobService.UpdateOne(SelectedJob);
-            
-            if(updatedJob == null)
+            if (action == "save" && SelectedJob != null)
             {
-                return NotFound();
+                
+                var updatedJob = await _jobService.UpdateOne(SelectedJob);
+
+                if (updatedJob == null)
+                {
+                    return NotFound();
+                }
+
+                return RedirectToPage("index", new { Message = "The Applied job was updated successfully" });
             }
 
-            return RedirectToPage("index");
+
+            return Page();
+            
+
+            
             
         }
     }

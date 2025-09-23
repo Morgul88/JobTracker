@@ -8,8 +8,6 @@
         public string Company { get; set; } = null!;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; }
-
-        
         public string? Notes { get; set; }
         public string? Contact { get; set; }
         public string Status { get; set; } = "Applied";

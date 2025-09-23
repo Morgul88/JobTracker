@@ -58,6 +58,7 @@ body {
     }
     .head-line h2{
         padding-right:30px;
+        font-weight:400;
     }
 
 .number-count {
@@ -432,4 +433,22 @@ form button {
     form button:hover {
         background-color: royalblue;
     }
+
+
+.flying-message {
+    display: flex;
+    justify-content: center;
+    margin: 10px 40px;
+    text-align: center;
+    height: 40px;
+    background-color: #fff3cd; /* mjuk gul */
+    color: #856404;
+    padding: 10px;
+    border-radius: 10px;
+    position:absolute;
+    top:45px;
+    left:43%;
+    z-index:500;
+   
+}
 

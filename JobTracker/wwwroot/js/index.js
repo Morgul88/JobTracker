@@ -65,3 +65,16 @@ toggleButton?.addEventListener('click', () => {
 //         formLetter.classList.remove('form-section-remove');
 //     }
 // });
+
+
+window.addEventListener('DOMContentLoaded' , (event) => {
+    flyingMessage = document.getElementById('flying-message');
+
+    if (flyingMessage) {
+        setTimeout(() => {
+            flyingMessage.style.display = 'none';
+        }, 5000)
+    }
+
+        
+})

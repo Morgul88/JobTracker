@@ -2,11 +2,13 @@
 @model JobTracker.Pages.DetailsModel
 @{
     ViewData["Title"] = "Job Details";
-    
 
-    
+
+    <partial name="_ValidationScriptsPartial" />
+    <vc:validation-summary />
 }
-
+<partial name="_ValidationScriptsPartial" />
+<vc:validation-summary />
 
 
 <link rel="stylesheet" href="~/css/Details.css" />
@@ -18,25 +20,31 @@
             <div class="job-card-details">
                 <label>Title:</label>
                 <input asp-for="SelectedJob.Title" />
+                <span asp-validation-for="SelectedJob.Title" class="text-danger"></span>
                 <input type="hidden" asp-for="SelectedJob.Id" />
                 <label>Company:</label>
                 <input asp-for="SelectedJob.Company" />
+                <span asp-validation-for="SelectedJob.Company" class="text-danger"></span>
 
                 <label>Applied:</label>
                 <input asp-for="SelectedJob.CreatedAt" />
-
+                <span asp-validation-for="SelectedJob.CreatedAt" class="text-danger"></span>
 
                 <label>Updated:</label>
                 <input asp-for="SelectedJob.UpdatedAt" />
+                <span asp-validation-for="SelectedJob.UpdatedAt" class="text-danger"></span>
 
                 <label>Description:</label>
                 <textarea asp-for="SelectedJob.Description"></textarea>
+                <span asp-validation-for="SelectedJob.Description" class="text-danger"></span>
 
                 <label>Notes:</label>
                 <textarea asp-for="SelectedJob.Notes"></textarea>
+                <span asp-validation-for="SelectedJob.Notes" class="text-danger"></span>
 
                 <label>Contact:</label>
                 <input asp-for="SelectedJob.Contact" />
+                <span asp-validation-for="SelectedJob.Contact" class="text-danger"></span>
 
 
                 <label>Status:</label>
@@ -49,8 +57,8 @@
 
 
                 <div class="btn-div">
-                    <button type="submit" class="save-btn">Save</button>
-                    <button type="submit" class="save-btn remove-btn">Remove</button>
+                    <button type="submit" name="action" value="save" class="save-btn">Save</button>
+                    <button type="submit" name="action" value="remove" class="save-btn remove-btn">Remove</button>
                 </div>
                 
             </div>

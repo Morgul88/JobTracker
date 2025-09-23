@@ -26,7 +26,15 @@
                  
             </a>
                
-               
+            @if (!string.IsNullOrEmpty(Model.Message))
+            {
+                <div id="flying-message" class="flying-message">
+
+                    <span>@Model.Message</span>
+
+
+                </div>
+            }
         </div>
         
     </header>

@@ -75,6 +75,22 @@ namespace JobTracker.Service
             
         }
 
+        public async Task<Jobs?> RemoveOne(Jobs job)
+        {
+            var jobToDelete = await _context.Jobs.FirstOrDefaultAsync(x => x.Id == job.Id);
+            
+            if(jobToDelete != null)
+            {
+                _context.Jobs.Remove(jobToDelete);
+
+                await _context.SaveChangesAsync();
+
+                return jobToDelete;
+            }
+            return null;
+
+        }
+
 
     }
 }
