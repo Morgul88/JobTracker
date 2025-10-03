@@ -162,9 +162,9 @@ ul {
     margin-bottom: 10px;
     text-decoration: none;
     color: inherit;
-    height: 65px;
+    height: auto;
     font-size: 16px;
-    padding:2px 15px 0px 10px;
+    padding:2px 15px 2px 10px;
     border-radius: 10px;
     align-items: center;
     transition: transform 0.5s, box-shadow 0.5s;
@@ -215,6 +215,7 @@ ul {
     margin-bottom: 0;
     justify-content: space-between;
     width:100%;
+    
 }
     .flex-div p {
         margin-bottom: 0;
