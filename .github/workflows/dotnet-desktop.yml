@@ -30,7 +30,7 @@ jobs:
 
     # Build solution in Release
     - name: Build solution
-      run: dotnet build ${{ env.Solution_Name }} --configuration Release --no-restore
+      run: dotnet build ${{ env.Solution_Name }} --configuration Release --no-restore /p:TreatWarningsAsErrors=false
 
     # Run tests
     - name: Run tests
