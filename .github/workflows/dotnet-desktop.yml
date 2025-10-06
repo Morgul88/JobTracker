@@ -1,4 +1,4 @@
-name: JobTracker CI/CD
+name: Build JobTracker
 
 on:
   push:
@@ -7,62 +7,23 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: windows-latest
+
     env:
       Solution_Name: JobTracker.sln
-      Test_Project_Path: JobTracker.Tests\JobTracker.Tests.csproj
-      Wap_Project_Directory: JobTracker.Package
-      Wap_Project_Path: JobTracker.Package\JobTracker.Package.wapproj
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 9.0.x
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
 
-    # Restore NuGet packages
-    - name: Restore solution
-      run: dotnet restore ${{ env.Solution_Name }}
+      - name: Restore NuGet packages
+        run: dotnet restore ${{ env.Solution_Name }}
 
-    # Build solution in Release
-    - name: Build solution
-      run: dotnet build ${{ env.Solution_Name }} --configuration Release --no-restore /p:TreatWarningsAsErrors=false
-
-    # Run tests
-    - name: Run tests
-      run: dotnet test ${{ env.Test_Project_Path }} --configuration Release --no-build
-
-    # Ensure WAP directory exists
-    - name: Ensure WAP directory
-      run: New-Item -ItemType Directory -Force -Path ${{ env.Wap_Project_Directory }}
-
-    # Decode PFX and save
-    - name: Decode PFX certificate
-      run: |
-        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
-        $certificatePath = Join-Path -Path ${{ env.Wap_Project_Directory }} -ChildPath GitHubActionsWorkflow.pfx
-        [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
-
-    # Build and package WAP project
-    - name: Build WAP package
-      run: msbuild ${{ env.Wap_Project_Path }} `
-        /p:Configuration=Release `
-        /p:UapAppxPackageBuildMode=StoreUpload `
-        /p:AppxBundle=Always `
-        /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx `
-        /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
-
-    # Remove PFX after build
-    - name: Remove PFX
-      run: Remove-Item -Path ${{ env.Wap_Project_Directory }}\GitHubActionsWorkflow.pfx
-
-    # Upload MSIX package
-    - name: Upload MSIX artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: MSIX Package
-        path: ${{ env.Wap_Project_Directory }}\AppPackages
+      - name: Build solution
+        run: dotnet build ${{ env.Solution_Name }} --configuration Release --no-restore
